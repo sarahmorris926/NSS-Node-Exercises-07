@@ -1,4 +1,13 @@
 #!/usr/bin/env node
-const fs = require('fs')
+const {readFileSync} = require('fs')
 
-// fs.readFileSync()
+const file = process.argv[2];
+
+if (file) {
+    try {
+        const data = readFileSync(file);
+        process.stdout.write(data);
+    } catch (err) {
+        console.log('Buncha nope.', err);
+    }
+}
